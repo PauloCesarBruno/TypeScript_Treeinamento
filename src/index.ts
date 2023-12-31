@@ -28,7 +28,7 @@ const updateUserLayout = async (): Promise <void> => {
 updateUserLayout();
 
 /* Abaixo exemplos de como posso variar um assertion em Type Script, dou 3 Exemplos:
-ou seja um Union atracéz de um pipe-line, um TypeCast e um álias.*/ 
+ou seja um Union atravéz de um pipe-line, um TypeCast e um álias.*/ 
 function addEmployee(): void {
  // Abaixo Exemplo de um "Union - usando um pipe-line"
  // let fullName: HTMLInputElement | null = document.querySelector('#fullName') 
@@ -41,7 +41,7 @@ function addEmployee(): void {
  // let addressWork = document.querySelector('#addressWork') as HTMLInputElement;
  // let user: userType;
 
- // TRABALHANDO COM destruturação:
+ // PORÉM ESTPU USNDO TRABALHANDO "Destruturação":
  let formFields = [
   <HTMLInputElement>document.querySelector('#fullName'),
   <HTMLInputElement>document.querySelector('#register'),
