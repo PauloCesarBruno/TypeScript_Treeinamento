@@ -26,7 +26,6 @@ const updateUserLayout = async (): Promise <void> => {
 };
 
 updateUserLayout();
-
 /* Abaixo exemplos de como posso variar um assertion em Type Script, dou 3 Exemplos:
 ou seja um Union atravéz de um pipe-line, um TypeCast e um álias.*/ 
 function addEmployee(): void {
