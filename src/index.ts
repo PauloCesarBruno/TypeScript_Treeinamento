@@ -1,4 +1,4 @@
-import { accessOptions, userType } from "./Models";
+import { accessOptions, IUser } from "./Models";
 
 let content  = document.getElementById('content') as HTMLInputElement;
 const button = <HTMLInputElement> document.querySelector('button[id="add"')
@@ -8,18 +8,18 @@ button.addEventListener('click',addEmployee)
 const accessOptionsValues = Object.values(accessOptions)
 
 // Chamar Usuários.
-const getUser = async(): Promise <userType[]> => {
+const getUser = async(): Promise <IUser[]> => {
   // Função que seta o servidor criado para meu "mock"
   const response: Response = await fetch('http://localhost:5011/users');
-  const users: userType[] = await response.json();
+  const users: IUser[] = await response.json();
   return users;
 }
 
 // Montar o Layout.
 const updateUserLayout = async (): Promise <void> => {
-  const users: userType[] = await getUser();
+  const users: IUser[] = await getUser();
 
-  users.map((user: userType)=>{
+  users.map((user: IUser)=>{
     content.innerHTML += <string>(createLine(user)
       );
   });
@@ -38,7 +38,7 @@ function addEmployee(): void {
  // let active = document.querySelector('#active') as HTMLInputElement;
  // let addressHome = document.querySelector('#addressHome') as HTMLInputElement;
  // let addressWork = document.querySelector('#addressWork') as HTMLInputElement;
- // let user: userType;
+ // let user: IUser;
 
  // PORÉM ESTPU USNDO TRABALHANDO "Destruturação":
  let formFields = [
@@ -52,7 +52,7 @@ function addEmployee(): void {
 
   const [fullName, register, admin, active, addressHome, addressWork] = formFields
 
-  let user: userType =  {
+  let user: IUser =  {
     fullName: fullName!.value,
     register: register.value != '' ? register.value : undefined,
     active: active.checked,
@@ -84,7 +84,7 @@ function createLine({
   register = Math.random().toString(36).substring(7).toUpperCase(),
   active = false,
   access = accessOptions.undefined
-}: userType, 
+}: IUser, 
   ...address: string []): string {
   return `
   <div class="card mb-1">
@@ -93,7 +93,7 @@ function createLine({
     </div>
     <div class="card-body">
       <h5 class="card-title">${fullName}</h5>
-      <a href="#" class="btn btn-primary">${active ? 'Ativo' : 'Inativo'}</a>
+      <a href="#" class="btn btn-info">${active ? 'Ativo' : 'Inativo'}</a>
     </div>
     ${
       address.length > 0 ?

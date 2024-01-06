@@ -1,13 +1,19 @@
 export enum accessOptions {
-    administrator = 'administrador',
-    manager = 'gerente',
-    employee = 'funcionario',
+    administrator = 'Administrador',
+    manager = 'Gerente',
+    employee = 'Funcionario',
     undefined = 'Não definido'
+  } 
+  
+  interface IPerson { 
+   fullName:  string;
+   address?: string[];
   }
 
-  export type userType = {
-     fullName: string;
-     register?: string | number;
-     access?: accessOptions;
-     active?: boolean;
+  export interface IUser extends IPerson { // Extenção da Interface
+   register?: string | number;
+   access?: accessOptions;
+   active?: boolean;
   }
+
+  
